@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { Tournament } from './tournament.entity';
+import { TournamentService } from './tournament.service';
+import { TournamentController } from './tournament.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Tournament])],
-  exports: [TypeOrmModule],
+  controllers: [TournamentController],
+  providers: [TournamentService],
+  exports: [TournamentService, TypeOrmModule],
 })
 export class TournamentModule {}
